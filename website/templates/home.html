@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="max-w-2xl mx-auto px-10 mb-16">
+    <a href="/new/"><button class="block uppercase mx-auto shadow bg-nav hover:bg-bhover focus:shadow-outline focus:outline-none text-black text-text py-3 px-10 rounded mb-5">New Paste</button></a>
+    <p class="text-white">Last Pastes:</p>
+    {% for i in range(p|length) %}
+        <div class="bg-nav rounded p-6 mb-3">
+            <a href="/{{titles[i]}}" class="text-3xl font-bold text-link mb-4 mt-0 hover:underline">{{titles[i]}}</a>
+            {% if (p[i].text)|length  > 25 %}
+                <p class="text-white text-sm">{{(p[i].text)[:25]}}.....</p>
+            {% else %}
+                <p class="text-white text-sm">{{(p[i].text)}}</p>
+            {% endif %}
+            <p class="text-white text-sm">Views: {{p[i].views}}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

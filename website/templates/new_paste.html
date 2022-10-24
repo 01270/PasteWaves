@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="max-w-2xl mx-auto px-10">
+    <form method="POST">
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-text">Paste Text:</label>
+        <textarea name="text" id="message" rows="4" class="block p-2.5 w-full text-sm text-body bg-gray-50 h-44 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter Your Text..."></textarea>
+        <button type="submit" class="block uppercase mx-auto shadow bg-nav hover:bg-bhover focus:shadow-outline focus:outline-none text-black text-text py-3 px-10 rounded mt-5">Submit</button>
+    </form>
+</div>
+{% endblock %}

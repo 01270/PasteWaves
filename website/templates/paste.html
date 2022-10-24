@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="max-w-2xl mx-auto px-10 justify-between">
+    <div class="flex flex-row justify-between">
+        <p class="mt-5 text-text">Views: <span class="text-link hover:underline">{{p.views}}</span></p>
+        <p class="mt-5 text-text">Date: <span class="text-link">{{p.date}}</span></p>
+    </div>
+    <div class="bg-nav text-white pl-4 pt-4 pb-4" style="min-height: 200px;">
+        <ul>
+            {% for i in (p.text).split('\n') %}
+            <li style="overflow-wrap: break-word; white-space: pre-wrap;">{{i}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="flex flex-row justify-between">
+        {% if user %}
+            {% if user.id == p.author %}
+                <form action="/delte-paste/{{p.id}}/" method="POST">
+                    <input hidden name="user_ip" value="{{ip_address}}"/>
+                    <button class="block uppercase mx-auto shadow bg-nav hover:bg-bhover focus:shadow-outline focus:outline-none text-black text-text py-3 px-10 rounded mt-5">Delete</button>
+                </form>
+            {% endif %}
+        {% endif %}
+        <a href="/raw/{{title}}"><button class="block uppercase mx-auto shadow bg-nav hover:bg-bhover focus:shadow-outline focus:outline-none text-black text-text py-3 px-10 rounded mt-5">View Raw</button></a>
+    </div>
+</div>
+{% endblock %}
