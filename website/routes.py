@@ -8,7 +8,7 @@ routes =  Blueprint("rotes", __name__)
 
 @routes.route("/")
 def home():
-    pastes = Paste.query.limit(15).all()
+    pastes = Paste.query.all()
     return render_template("home.html", p=pastes, titles=[(encode(str(i.id))) for i in pastes])
 
 
@@ -17,7 +17,6 @@ def new_paste():
     if request.method == 'POST':
         text = request.form.get("text")
         if '<' in text or '>' in text: return 'XSS Won\'t work here sir'
-        if not text or len(text) < 6: print("bad")
         else:
             user = User.query.filter_by(ip_address=request.remote_addr).first()
             if not user: 
@@ -38,7 +37,6 @@ def delte_paste(paste_id):
     user_ip = request.form.get("user_ip")
     user = User.query.filter_by(ip_address=user_ip).first()
     for i in user.pastes:
-        print(str(i.id), str(paste_id))
         if str(i.id) == str(paste_id):
             Paste.query.filter_by(id=paste_id).delete()
             db.session.commit()
