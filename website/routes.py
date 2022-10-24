@@ -16,6 +16,7 @@ def home():
 def new_paste():
     if request.method == 'POST':
         text = request.form.get("text")
+        if '<' in text or '>' in text: return 'XSS Won\'t work here sir'
         if not text or len(text) < 6: print("bad")
         else:
             user = User.query.filter_by(ip_address=request.remote_addr).first()
