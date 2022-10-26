@@ -8,7 +8,7 @@ routes =  Blueprint("rotes", __name__)
 
 @routes.route("/")
 def home():
-    pastes = Paste.query.all()
+    pastes = Paste.query.limit(15).all()
     return render_template("home.html", p=pastes, titles=[(encode(str(i.id))) for i in pastes])
 
 
