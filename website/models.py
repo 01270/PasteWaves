@@ -3,7 +3,7 @@ from sqlalchemy.sql import func
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    ip_address = db.Column(db.String(100), unique=True)
+    ip_address = db.Column(db.String(100))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     pastes = db.relationship("Paste", backref='user', passive_deletes=True)
 
