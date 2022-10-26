@@ -3,11 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 
 db = SQLAlchemy()
-DB_NAME = "database.db"
+DB_NAME = "sql.db"
 
 def run_website():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'Q3JFU4KC@!djg84jvd&##XxX:5633;FXXX'
+    app.config['SECRET_KEY'] = 'Q3JFU4KC@!djg84jvd&##XxX:5633;FXXXx'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     db.init_app(app)
 
